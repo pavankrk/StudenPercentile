@@ -17,22 +17,21 @@ public class calculatePaercentileRank {
 			throw new IllegalArgumentException("Student Data  array is empty");
 		}
 
-		int lowerCount = 0;
-		int sameCount = 0;
 		int n = data.size();
-		for (int i = 0; i < data.size(); i++) {
-			if (data.get(i) < value) {
-				lowerCount++;
-			} else if (data.get(i) == value) {
-				sameCount++;
-			} else {
-				break;
-			}
-		}
+		
+		int lowerCount = (int) data.stream()
+		                 .filter(s -> s < value)
+		                 .count();
+		
+		int sameCount = (int) data.stream()
+	                          .filter(s -> s == value)
+	                          .count();
+		
 		double p = (lowerCount + 0.5 * sameCount) / n * 100;
-		double r = ((100 - p) * data.size() )/ 100;
+		double r = ((100 - p) * n )/ 100;
+		
 		result = "Percentile : " + p + " \nRank\t   : " + Integer.valueOf((int) Math.ceil(r));
-		return result;
+                return result;
 	}
 
 	}
