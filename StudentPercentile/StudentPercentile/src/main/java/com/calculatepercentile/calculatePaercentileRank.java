@@ -1,13 +1,11 @@
 package com.calculatepercentile;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class calculatePaercentileRank {
 	protected ArrayList<Double> data;
 
 	public void setData(final ArrayList<Double> data) {
-		Collections.sort(data);
 		this.data = data;
 	}
 
@@ -19,11 +17,11 @@ public class calculatePaercentileRank {
 
 		int n = data.size();
 		
-		int lowerCount = (int) data.stream()
+		long lowerCount =  data.stream()
 		                 .filter(s -> s < value)
 		                 .count();
 		
-		int sameCount = (int) data.stream()
+		long sameCount =   data.stream()
 	                          .filter(s -> s == value)
 	                          .count();
 		
