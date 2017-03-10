@@ -1,11 +1,13 @@
 package com.calculatepercentile;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class calculatePaercentileRank {
 	protected ArrayList<Double> data;
 
 	public void setData(final ArrayList<Double> data) {
+		Collections.sort(data);
 		this.data = data;
 	}
 
